@@ -1,0 +1,18 @@
+<% 
+serverlist = "" 
+num_servers = 0
+
+@servers.each do |server|
+  if num_servers > 0
+    serverlist << "|"
+  end
+  serverlist << "http://" + server + ":" + @port + "/pools/default/bucketsStreaming/" + @bucket
+  num_servers += 1
+end
+-%>
+#############################################################################
+#     THIS FILE IS MANAGED BY PUPPET.  ANY CHANGES WILL BE OVERWRITTEN.     #
+#              $puppet/modules/moxi/templates/moxi-cluster.erb              #
+#############################################################################
+
+url=<%= serverlist %>
